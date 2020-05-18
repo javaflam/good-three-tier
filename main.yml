@@ -1,0 +1,21 @@
+---
+- name: setup load balancer
+  hosts: frontends
+  gather_facts: false
+  roles:
+    - common
+    - frontend
+
+- name: setup app
+  hosts: apps
+  gather_facts: false
+  roles:
+    - common
+    - app
+
+- name: setup database
+  hosts: appdbs
+  gather_facts: false
+  roles:
+    - common
+    - database
