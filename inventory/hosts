@@ -1,20 +1,13 @@
-[frontends] 
-frontend1 ansible_host=frontend1."{{ GUID }}".internal
-
-[apps] 
-app1 ansible_host=app1."{{ GUID }}".internal
-app2 ansible_host=app2."{{ GUID }}".internal
-
-[appdbs] 
-appdb1 ansible_host=appdb1."{{ GUID }}".internal
-
-[internal:children]
-frontends
-apps
-appdbs
-
-[internal:vars]
-GUID="{{ lookup('env', 'GUID') }}"
-
 [all:vars]
-GUID=dc53
+GUID=ad25
+
+[frontends]
+frontend1.ad25.internal ansible_ssh_host=frontend1.ad25.example.opentlc.com
+
+[apps]
+app1.ad25.internal ansible_ssh_host=app1.ad25.example.opentlc.com
+app2.ad25.internal ansible_ssh_host=app2.ad25.example.opentlc.com
+
+[appdbs]
+appdb1.ad25.internal ansible_ssh_host=appdb1.ad25.example.opentlc.com
+
